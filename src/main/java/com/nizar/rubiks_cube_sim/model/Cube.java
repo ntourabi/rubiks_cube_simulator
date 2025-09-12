@@ -1,25 +1,27 @@
 package com.nizar.rubiks_cube_sim.model;
 
-public class Cube {
-    private Face[] faces;
+import java.util.Map;
 
-    public Cube(Face[] faces) {
+public class Cube {
+    private Map<FaceName, Face> faces;
+
+    public Cube(Map<FaceName, Face> faces) {
         this.faces = faces;
     }
 
-    public Face[] getFaces() {
+    public Map<FaceName, Face> getFaces() {
         return faces;
     }
 
-    public void setFaces(Face[] faces) {
+    public void setFaces(Map<FaceName, Face> faces) {
         this.faces = faces;
     }
 
-    public Face getFace(int index) {
-        return faces[index];
+    public Face getFace(FaceName faceName) {
+        return faces.get(faceName);
     }
 
-    public void setFace(int index, Face face) {
-        faces[index] = face;
+    public void setFace(FaceName faceName, Face face) {
+        faces.put(faceName, face);
     }
 }
