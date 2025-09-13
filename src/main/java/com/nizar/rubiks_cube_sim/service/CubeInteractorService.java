@@ -1,5 +1,9 @@
 package com.nizar.rubiks_cube_sim.service;
 
-public interface CubeInteractorService {
+import com.nizar.rubiks_cube_sim.model.Face;
 
+public interface CubeInteractorService {
+    public void rotateFace();
+    public void rotateEdgesBorderingFace();
+    public void makeMove();
 }
