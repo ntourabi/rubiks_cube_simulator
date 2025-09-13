@@ -1,10 +1,20 @@
 package com.nizar.rubiks_cube_sim.model;
 
 public enum FaceName {
-    FRONT,
-    BACK,
-    UP,
-    DOWN,
-    LEFT,
-    RIGHT
+    FRONT("F"),
+    BACK("B"),
+    UP("U"),
+    DOWN("D"),
+    LEFT("L"),
+    RIGHT("R");
+
+    private final String notation;
+
+    FaceName(String notation) {
+        this.notation = notation;
+    }
+
+    public String getNotation() {
+        return notation;
+    }
 }
