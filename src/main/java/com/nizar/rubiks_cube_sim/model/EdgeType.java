@@ -6,13 +6,13 @@ public enum EdgeType {
     LEFT_EDGE(new int[]{1, 4, 7}),
     RIGHT_EDGE(new int[]{3, 6, 9});
 
-    private int[] values;
+    private int[] indices;
 
     EdgeType(int[] values) {
-        this.values = values;
+        this.indices = indices;
     }
 
-    public int[] getValues() {
-        return values;
+    public int[] getIndices() {
+        return indices;
     }
 }
