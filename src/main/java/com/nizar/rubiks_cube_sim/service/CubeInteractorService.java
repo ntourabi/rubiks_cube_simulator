@@ -2,6 +2,7 @@ package com.nizar.rubiks_cube_sim.service;
 
 import com.nizar.rubiks_cube_sim.model.Cube;
 import com.nizar.rubiks_cube_sim.model.Face;
+import com.nizar.rubiks_cube_sim.model.FaceName;
 import com.nizar.rubiks_cube_sim.model.Turn;
 
 public interface CubeInteractorService {
@@ -17,10 +18,10 @@ public interface CubeInteractorService {
      * @param face
      * @param turn
      */
-    public void rotateEdgesBorderingFace(Cube cube, Face face, Turn turn);
+    public void rotateEdgesBorderingFace(Cube cube, FaceName face, Turn turn);
 
     /**
      * This combines rotateFace() and rotateEdgesBorderingFace.
      */
-    public void makeMove(Cube cube, Face face, Turn turn);
+    public void makeMove(Cube cube, FaceName face, Turn turn);
 }
