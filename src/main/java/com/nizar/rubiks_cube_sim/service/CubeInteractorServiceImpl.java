@@ -3,6 +3,9 @@ package com.nizar.rubiks_cube_sim.service;
 import com.nizar.rubiks_cube_sim.model.*;
 
 public class CubeInteractorServiceImpl implements CubeInteractorService {
+
+    public CubeInteractorServiceImpl() {};
+
     /**
      * Takes a face and repaints it to simulate a rotation.
      *
@@ -131,7 +134,8 @@ public class CubeInteractorServiceImpl implements CubeInteractorService {
     }
 
     /**
-     * This combines rotateFace() and rotateEdgesBorderingFace.
+     * This combines rotateFace() and rotateEdgesBorderingFace().
+     *
      *
      * @param cube
      * @param faceName
