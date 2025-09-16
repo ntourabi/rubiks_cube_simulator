@@ -14,7 +14,7 @@ public class Face {
     public Face(Colour[] tiles) {
         if (tiles == null) {
             throw new IllegalArgumentException("Face object cannot have 'null' tiles.");
-        } else if (tiles.length == FACE_SIZE) {
+        } else if (tiles.length != FACE_SIZE) {
             throw new IllegalArgumentException("Face object must have exactly 9 tiles.");
         }
         this.tiles = tiles.clone();
