@@ -1,8 +1,6 @@
 package com.nizar.rubiks_cube_sim.service;
 
-import com.nizar.rubiks_cube_sim.model.Colour;
-import com.nizar.rubiks_cube_sim.model.Face;
-import com.nizar.rubiks_cube_sim.model.Turn;
+import com.nizar.rubiks_cube_sim.model.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -33,13 +31,62 @@ public class CubeInteractorServiceTests {
     }
 
     @Test
-    void rotateFace_counterClockwise_success() {}
+    void rotateFace_counterClockwise_success() {
+        //Arrange.
+        Face face = new Face(new Colour[] {
+                Colour.RED, Colour.BLUE, Colour.RED,
+                Colour.YELLOW, Colour.ORANGE, Colour.YELLOW,
+                Colour.GREEN, Colour.WHITE, Colour.GREEN
+        });
+        Face expectedFace = new Face(new Colour[] {
+                Colour.RED, Colour.YELLOW, Colour.GREEN,
+                Colour.BLUE, Colour.ORANGE, Colour.WHITE,
+                Colour.RED, Colour.YELLOW, Colour.GREEN
+        });
+        //Act.
+        cubeInteractorService.rotateFace(face, Turn.ANTICLOCKWISE_QUARTER);
+        //Assert.
+        Colour[] colours = face.getTiles();
+        Colour[] expectedColours = expectedFace.getTiles();
+        for (int i = 0; i < 9; i++) {
+            assertEquals(colours[i], expectedColours[i]);
+        }
+    }
 
     @Test
-    void rotateFace_counterCounterClockwise_success() {}
+    void rotateFace_counterCounterClockwise_success() {
+        //Arrange.
+        Face face = new Face(new Colour[] {
+                Colour.RED, Colour.BLUE, Colour.RED,
+                Colour.YELLOW, Colour.ORANGE, Colour.YELLOW,
+                Colour.GREEN, Colour.WHITE, Colour.GREEN
+        });
+        Face expectedFace = new Face(new Colour[] {
+                Colour.GREEN, Colour.WHITE, Colour.GREEN,
+                Colour.YELLOW, Colour.ORANGE, Colour.YELLOW,
+                Colour.RED, Colour.BLUE, Colour.RED
+        });
+        //Act.
+        cubeInteractorService.rotateFace(face, Turn.HALF);
+        //Assert.
+        Colour[] colours = face.getTiles();
+        Colour[] expectedColours = expectedFace.getTiles();
+        for (int i = 0; i < 9; i++) {
+            assertEquals(colours[i], expectedColours[i]);
+        }
+    }
 
     @Test
-    void rotateEdgesBorderingFace_clockwise_success() {}
+    void rotateEdgesBorderingFace_clockwise_success() {
+        //Arrange
+        Cube originalCube = Cube.createSolvedCube();
+        Cube expectedCube = Cube.createSolvedCube();
+        //Act
+        cubeInteractorService.rotateEdgesBorderingFace(originalCube, FaceName.UP, Turn.CLOCKWISE_QUARTER);
+        //Assert
+
+
+    }
 
     @Test
     void rotateEdgesBorderingFace_counterClockwise_success() {}
