@@ -81,9 +81,18 @@ public class CubeInteractorServiceTests {
         //Arrange
         Cube originalCube = Cube.createSolvedCube();
         Cube expectedCube = Cube.createSolvedCube();
+        //The faces bordering UP are FRONT, RIGHT, BACK, LEFT.
+        //Additionally, it is always the TOP_EDGE.
+        Face front = expectedCube.getFace(FaceName.FRONT);
+        Face back = expectedCube.getFace(FaceName.BACK);
+        Face left = expectedCube.getFace(FaceName.LEFT);
+        Face right = expectedCube.getFace(FaceName.RIGHT);
+
         //Act
         cubeInteractorService.rotateEdgesBorderingFace(originalCube, FaceName.UP, Turn.CLOCKWISE_QUARTER);
         //Assert
+
+        System.out.println(expectedCube.toString());
 
 
     }
