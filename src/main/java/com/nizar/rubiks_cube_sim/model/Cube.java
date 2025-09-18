@@ -40,5 +40,16 @@ public class Cube {
     public void setFace(FaceName faceName, Face face) {
         faces.put(faceName, face);
     }
+
+    @Override
+    public String toString() {
+        String str = getFace(FaceName.UP).toString() + "\n";
+        str += getFace(FaceName.FRONT).toString();
+        str += getFace(FaceName.RIGHT).toString();
+        str += getFace(FaceName.BACK).toString();
+        str += getFace(FaceName.LEFT).toString() + "\n";
+        str += getFace(FaceName.DOWN).toString();
+        return str;
+    }
 }
 

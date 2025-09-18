@@ -39,4 +39,16 @@ public class Face {
     public static Face createSolvedFace(Colour colour) {
         return new Face(new Colour[] {colour, colour, colour, colour, colour, colour, colour, colour, colour});
     }
+
+    @Override
+    public String toString() {
+        String str = "";
+        for (int i = 0; i < FACE_SIZE; i++) {
+            str += tiles[i].toString();
+            if (i == 2 || i == 5 || i == 8) {
+                str += "\n";
+            }
+        }
+        return str;
+    }
 }
