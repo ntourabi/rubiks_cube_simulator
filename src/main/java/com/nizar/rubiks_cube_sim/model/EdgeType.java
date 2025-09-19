@@ -8,7 +8,7 @@ public enum EdgeType {
 
     private int[] indices;
 
-    EdgeType(int[] values) {
+    EdgeType(int[] indices) {
         this.indices = indices;
     }
 

@@ -4,9 +4,10 @@ import com.nizar.rubiks_cube_sim.model.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CubeInteractorServiceTests {
+class CubeInteractorServiceTests {
 
     private final CubeInteractorService cubeInteractorService = new CubeInteractorServiceImpl();
+
     @Test
     void rotateFace_clockwise_success() {
         //Arrange.
@@ -87,6 +88,8 @@ public class CubeInteractorServiceTests {
         Face back = expectedCube.getFace(FaceName.BACK);
         Face left = expectedCube.getFace(FaceName.LEFT);
         Face right = expectedCube.getFace(FaceName.RIGHT);
+
+        System.out.println(expectedCube.toString());
 
         //Act
         cubeInteractorService.rotateEdgesBorderingFace(originalCube, FaceName.UP, Turn.CLOCKWISE_QUARTER);
