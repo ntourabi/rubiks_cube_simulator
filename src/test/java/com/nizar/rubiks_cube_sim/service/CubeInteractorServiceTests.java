@@ -84,10 +84,10 @@ class CubeInteractorServiceTests {
         Cube expectedCube = Cube.createSolvedCube();
         //The faces bordering UP are FRONT, RIGHT, BACK, LEFT.
         //Additionally, it is always the TOP_EDGE.
-        Face front = expectedCube.getFace(FaceName.FRONT);
-        Face back = expectedCube.getFace(FaceName.BACK);
-        Face left = expectedCube.getFace(FaceName.LEFT);
-        Face right = expectedCube.getFace(FaceName.RIGHT);
+        Colour[] left = expectedCube.getFace(FaceName.LEFT).getTiles();
+        Colour[] front = expectedCube.getFace(FaceName.FRONT).getTiles();
+        Colour[] right = expectedCube.getFace(FaceName.RIGHT).getTiles();
+        Colour[] back = expectedCube.getFace(FaceName.BACK).getTiles();
 
         System.out.println(originalCube.toString());
 
