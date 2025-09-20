@@ -89,13 +89,13 @@ class CubeInteractorServiceTests {
         Face left = expectedCube.getFace(FaceName.LEFT);
         Face right = expectedCube.getFace(FaceName.RIGHT);
 
-        System.out.println(expectedCube.toString());
+        System.out.println(originalCube.toString());
 
         //Act
         cubeInteractorService.rotateEdgesBorderingFace(originalCube, FaceName.UP, Turn.CLOCKWISE_QUARTER);
         //Assert
 
-        System.out.println(expectedCube.toString());
+        System.out.println(originalCube.toString());
 
 
     }
