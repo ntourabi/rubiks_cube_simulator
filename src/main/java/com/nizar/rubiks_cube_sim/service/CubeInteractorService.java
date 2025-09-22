@@ -9,6 +9,7 @@ public interface CubeInteractorService {
     /**
      * Takes a face and repaints it to simulate a rotation.
      * @param face
+     * @param turn
      */
     public void rotateFace(Face face, Turn turn);
 
@@ -22,6 +23,9 @@ public interface CubeInteractorService {
 
     /**
      * This combines rotateFace() and rotateEdgesBorderingFace.
+     * @param cube
+     * @param face
+     * @param turn
      */
     public void makeMove(Cube cube, FaceName face, Turn turn);
 }
