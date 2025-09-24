@@ -5,6 +5,11 @@ import com.nizar.rubiks_cube_sim.model.*;
 import java.util.Map;
 
 public class WhiteCrossSolver implements SolvingStage {
+    /**
+     * The main solving method. Takes a cube and solves the white cross stage, if it has not been solved yet.
+     * @param cube
+     * @return String - Sequence of operations in cubing notation to perform to get to that particular solving stage.
+     */
     @Override
     public String solve(Cube cube) {
         FaceName whiteFace = getWhiteFace(cube);
@@ -19,6 +24,11 @@ public class WhiteCrossSolver implements SolvingStage {
         return sequence.toString();
     }
 
+    /**
+     * This method finds the white face by checking all faces on a given cube.
+     * @param cube
+     * @return FaceName - the name of the white face i.e. the face with a white middle tile.
+     */
     private FaceName getWhiteFace(Cube cube) {
         Map<FaceName, Face> faces = cube.getFaces();
         for (FaceName faceName : faces.keySet()) {
@@ -28,6 +38,11 @@ public class WhiteCrossSolver implements SolvingStage {
         throw new RuntimeException("Couldn't find white face on cube.");
     }
 
+    /**
+     * This method checks if the current solving stage is complete.
+     * @param whiteFace
+     * @return boolean
+     */
     private boolean whiteCrossComplete(Face whiteFace) {
         Colour[] tiles = whiteFace.getTiles();
         return tiles[1] == Colour.WHITE && tiles[3] == Colour.WHITE && tiles[5] == Colour.WHITE && tiles[7] == Colour.WHITE;
