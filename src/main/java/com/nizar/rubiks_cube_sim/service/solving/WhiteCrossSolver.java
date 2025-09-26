@@ -1,13 +1,20 @@
 package com.nizar.rubiks_cube_sim.service.solving;
 
 import com.nizar.rubiks_cube_sim.model.*;
-
+import com.nizar.rubiks_cube_sim.service.CubeInteractorService;
 import java.util.Map;
 
 public class WhiteCrossSolver implements SolvingStage {
+
+    CubeInteractorService cubeInteractorService;
+
     /**
      * The main solving method. Takes a cube and solves the white cross stage, if it has not been solved yet.
-     * @param cube
+     * Stages are solved by repeatedly cycling through a process until solved.
+     * 1) Locate a misplaced white edge tile.
+     * 2) Pick a spot to move the white edge tile to.
+     * 3) Move the white edge tile into the correct spot.
+     * @param cube - The cube to be solved.
      * @return String - Sequence of operations in cubing notation to perform to get to that particular solving stage.
      */
     @Override
@@ -40,8 +47,8 @@ public class WhiteCrossSolver implements SolvingStage {
 
     /**
      * This method checks if the current solving stage is complete.
-     * @param whiteFace
-     * @return boolean
+     * @param whiteFace - A reference to the face with a white middle tile of the cube being solved.
+     * @return boolean - Whether a white cross has been fully formed.
      */
     private boolean whiteCrossComplete(Face whiteFace) {
         Colour[] tiles = whiteFace.getTiles();
@@ -91,6 +98,10 @@ public class WhiteCrossSolver implements SolvingStage {
      *  - Identifying any target tile to solve.
      *  - Selecting any unsolved white edge piece.
      *  - Finding the sequence of moves necessary to move it into place.
+     *  We'll call the white face the top (U). The process for moving a white edge tile is as follows:
+     *  - If it's on the bottom face (D), move it to the middle faces (L/F/R/B).
+     *  - Move the edge to index 7 of any middle face adjacent to the face touching the targetLocation.
+     *  - Perform a standard algorithm to put it into place.
      *
      * @param cube - The cube we are currently trying to solve.
      * @param currentLocation - The location of the current white tile.
@@ -98,6 +109,7 @@ public class WhiteCrossSolver implements SolvingStage {
      * @return String - The moves we took to solve the edge piece, using standard cube notation.
      */
     private String makeMove(Cube cube, TileLocation currentLocation, TileLocation targetLocation) {
+
         return "";
     }
 }
