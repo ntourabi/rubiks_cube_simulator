@@ -95,8 +95,8 @@ public class WhiteCrossSolver implements SolvingStage {
     /**
      * This method will take a misplaced white edge tile and put it in the correct spot.
      * We can put an unsolved white edge into place by:
-     *  - Identifying any target tile to solve.
-     *  - Selecting any unsolved white edge piece.
+     *  - Identifying any target tile with a missing white edge (targetLocation)
+     *  - Selecting any unsolved white edge piece (currentLocation)
      *  - Finding the sequence of moves necessary to move it into place.
      *  We'll call the white face the top (U). The process for moving a white edge tile is as follows:
      *  - If it's on the bottom face (D), move it to the middle faces (L/F/R/B).
@@ -109,7 +109,15 @@ public class WhiteCrossSolver implements SolvingStage {
      * @return String - The moves we took to solve the edge piece, using standard cube notation.
      */
     private String makeMove(Cube cube, TileLocation currentLocation, TileLocation targetLocation) {
+        String moves = "";
+        //We need to take care to avoid destroying already solved white edges.
+        while (!currentLocation.equals(targetLocation)) {
+            if (currentLocation.name() == FaceName.DOWN) {
 
-        return "";
+            } else {
+
+            }
+        }
+        return moves;
     }
 }
