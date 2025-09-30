@@ -2,20 +2,19 @@ package com.nizar.rubiks_cube_sim.service;
 
 import com.nizar.rubiks_cube_sim.model.Cube;
 import com.nizar.rubiks_cube_sim.service.solving.*;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class LayerByLayerCubeSolvingServiceImpl implements LayerByLayerCubeSolvingService {
 
-    private final List<SolvingStage> stageList = List.of(
-            new WhiteCrossSolver(),
-            new WhiteCornersSolver(),
-            new MiddleLayerEdgesSolver(),
-            new YellowCrossSolver(),
-            new OrientYellowCornersSolver(),
-            new PermuteYellowCornersSolver(),
-            new PermuteYellowEdgesSolver()
-    );
+    private final List<SolvingStage> stageList;
+
+    public LayerByLayerCubeSolvingServiceImpl(List<SolvingStage> stageList) {
+        this.stageList = stageList;
+    }
+
     /**
      * Run through all seven stages of the layer by layer solving method.
      * Stage 1 - solveWhiteCross

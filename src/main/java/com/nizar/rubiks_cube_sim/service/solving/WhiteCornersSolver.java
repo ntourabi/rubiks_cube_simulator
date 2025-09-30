@@ -4,10 +4,22 @@ import com.nizar.rubiks_cube_sim.model.Colour;
 import com.nizar.rubiks_cube_sim.model.Cube;
 import com.nizar.rubiks_cube_sim.model.Face;
 import com.nizar.rubiks_cube_sim.model.FaceName;
+import com.nizar.rubiks_cube_sim.service.CubeInteractorService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
+@Component
 public class WhiteCornersSolver implements SolvingStage {
+
+    CubeInteractorService cubeInteractorService;
+
+    @Autowired
+    public WhiteCornersSolver(CubeInteractorService cubeInteractorService) {
+        this.cubeInteractorService = cubeInteractorService;
+    }
+
     @Override
     public String solve(Cube cube) {
         String sequence = "";

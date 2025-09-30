@@ -1,7 +1,9 @@
 package com.nizar.rubiks_cube_sim.service;
 
 import com.nizar.rubiks_cube_sim.model.*;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CubeInteractorServiceImpl implements CubeInteractorService {
 
     public CubeInteractorServiceImpl() {};
