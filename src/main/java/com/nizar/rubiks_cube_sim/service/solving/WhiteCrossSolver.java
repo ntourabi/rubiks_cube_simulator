@@ -2,11 +2,21 @@ package com.nizar.rubiks_cube_sim.service.solving;
 
 import com.nizar.rubiks_cube_sim.model.*;
 import com.nizar.rubiks_cube_sim.service.CubeInteractorService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
+
 import java.util.Map;
 
+@Component
 public class WhiteCrossSolver implements SolvingStage {
 
     CubeInteractorService cubeInteractorService;
+
+    @Autowired
+    public WhiteCrossSolver(CubeInteractorService cubeInteractorService) {
+        this.cubeInteractorService = cubeInteractorService;
+    }
 
     /**
      * The main solving method. Takes a cube and solves the white cross stage, if it has not been solved yet.
