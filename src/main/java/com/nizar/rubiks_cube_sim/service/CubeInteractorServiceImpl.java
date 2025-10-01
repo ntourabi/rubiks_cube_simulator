@@ -9,8 +9,8 @@ public class CubeInteractorServiceImpl implements CubeInteractorService {
     /**
      * Takes a face and repaints it to simulate a rotation.
      *
-     * @param face
-     * @param turn
+     * @param face - The target face.
+     * @param turn - The type of move.
      */
     @Override
     public void rotateFace(Face face, Turn turn) {
@@ -55,9 +55,9 @@ public class CubeInteractorServiceImpl implements CubeInteractorService {
     /**
      * Each face has four bordering faces/edges. This will rotate the edges directly bordering one specific face.
      *
-     * @param cube
-     * @param faceName
-     * @param turn
+     * @param cube - The cube we are transforming.
+     * @param faceName - The target face.
+     * @param turn - The type of move.
      */
     @Override
     public void rotateEdgesBorderingFace(Cube cube, FaceName faceName, Turn turn) {
@@ -134,16 +134,26 @@ public class CubeInteractorServiceImpl implements CubeInteractorService {
     }
 
     /**
-     * This combines rotateFace() and rotateEdgesBorderingFace().
+     * This combines rotateFace() and rotateEdgesBorderingFace.
      *
-     *
-     * @param cube
-     * @param faceName
-     * @param turn
+     * @param cube - The cube we are transforming.
+     * @param faceName - The target face.
+     * @param turn - The type of move.
      */
     @Override
     public void makeMove(Cube cube, FaceName faceName, Turn turn) {
         rotateFace(cube.getFace(faceName), turn);
         rotateEdgesBorderingFace(cube, faceName, turn);
+    }
+
+    /**
+     * Apply a common predefined sequence of moves (an algorithm) to the cube.
+     *
+     * @param cube - the cube to apply the algorithm to
+     * @param algorithm - the sequence of moves
+     */
+    @Override
+    public void applyAlgorithm(Cube cube, Algorithm algorithm) {
+
     }
 }
