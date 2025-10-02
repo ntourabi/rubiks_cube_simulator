@@ -27,43 +27,43 @@ public enum FaceName {
      * Each array of FaceEdges is deliberately pre-ordered for easy swapping / rotations. In-order traversal = Right Quarter Turn.
      * @return all the edges that border a particular face.
      */
-    public FaceEdge[] getBorderingEdges() {
+    public StickerTripletLocation[] getBorderingEdges() {
         return switch(this) {
-            case FRONT -> new FaceEdge[] {
-                    new FaceEdge(UP, EdgeType.BOTTOM_EDGE),
-                    new FaceEdge(RIGHT, EdgeType.LEFT_EDGE),
-                    new FaceEdge(DOWN, EdgeType.TOP_EDGE),
-                    new FaceEdge(LEFT, EdgeType.RIGHT_EDGE)
+            case FRONT -> new StickerTripletLocation[] {
+                    new StickerTripletLocation(UP, StickerTriplet.BOTTOM_EDGE),
+                    new StickerTripletLocation(RIGHT, StickerTriplet.LEFT_EDGE),
+                    new StickerTripletLocation(DOWN, StickerTriplet.TOP_EDGE),
+                    new StickerTripletLocation(LEFT, StickerTriplet.RIGHT_EDGE)
             };
-            case BACK -> new FaceEdge[] {
-                    new FaceEdge(UP, EdgeType.TOP_EDGE),
-                    new FaceEdge(LEFT, EdgeType.LEFT_EDGE),
-                    new FaceEdge(DOWN, EdgeType.BOTTOM_EDGE),
-                    new FaceEdge(RIGHT, EdgeType.RIGHT_EDGE)
+            case BACK -> new StickerTripletLocation[] {
+                    new StickerTripletLocation(UP, StickerTriplet.TOP_EDGE),
+                    new StickerTripletLocation(LEFT, StickerTriplet.LEFT_EDGE),
+                    new StickerTripletLocation(DOWN, StickerTriplet.BOTTOM_EDGE),
+                    new StickerTripletLocation(RIGHT, StickerTriplet.RIGHT_EDGE)
             };
-            case UP -> new FaceEdge[] {
-                    new FaceEdge(BACK, EdgeType.TOP_EDGE),
-                    new FaceEdge(RIGHT, EdgeType.TOP_EDGE),
-                    new FaceEdge(FRONT, EdgeType.TOP_EDGE),
-                    new FaceEdge(LEFT, EdgeType.TOP_EDGE)
+            case UP -> new StickerTripletLocation[] {
+                    new StickerTripletLocation(BACK, StickerTriplet.TOP_EDGE),
+                    new StickerTripletLocation(RIGHT, StickerTriplet.TOP_EDGE),
+                    new StickerTripletLocation(FRONT, StickerTriplet.TOP_EDGE),
+                    new StickerTripletLocation(LEFT, StickerTriplet.TOP_EDGE)
             };
-            case DOWN -> new FaceEdge[] {
-                    new FaceEdge(FRONT, EdgeType.BOTTOM_EDGE),
-                    new FaceEdge(RIGHT, EdgeType.BOTTOM_EDGE),
-                    new FaceEdge(BACK, EdgeType.BOTTOM_EDGE),
-                    new FaceEdge(LEFT, EdgeType.BOTTOM_EDGE)
+            case DOWN -> new StickerTripletLocation[] {
+                    new StickerTripletLocation(FRONT, StickerTriplet.BOTTOM_EDGE),
+                    new StickerTripletLocation(RIGHT, StickerTriplet.BOTTOM_EDGE),
+                    new StickerTripletLocation(BACK, StickerTriplet.BOTTOM_EDGE),
+                    new StickerTripletLocation(LEFT, StickerTriplet.BOTTOM_EDGE)
             };
-            case LEFT -> new FaceEdge[] {
-                    new FaceEdge(UP, EdgeType.LEFT_EDGE),
-                    new FaceEdge(FRONT, EdgeType.LEFT_EDGE),
-                    new FaceEdge(DOWN, EdgeType.LEFT_EDGE),
-                    new FaceEdge(BACK, EdgeType.RIGHT_EDGE)
+            case LEFT -> new StickerTripletLocation[] {
+                    new StickerTripletLocation(UP, StickerTriplet.LEFT_EDGE),
+                    new StickerTripletLocation(FRONT, StickerTriplet.LEFT_EDGE),
+                    new StickerTripletLocation(DOWN, StickerTriplet.LEFT_EDGE),
+                    new StickerTripletLocation(BACK, StickerTriplet.RIGHT_EDGE)
             };
-            case RIGHT -> new FaceEdge[] {
-                    new FaceEdge(UP, EdgeType.BOTTOM_EDGE),
-                    new FaceEdge(BACK, EdgeType.LEFT_EDGE),
-                    new FaceEdge(DOWN, EdgeType.TOP_EDGE),
-                    new FaceEdge(FRONT, EdgeType.RIGHT_EDGE)
+            case RIGHT -> new StickerTripletLocation[] {
+                    new StickerTripletLocation(UP, StickerTriplet.BOTTOM_EDGE),
+                    new StickerTripletLocation(BACK, StickerTriplet.LEFT_EDGE),
+                    new StickerTripletLocation(DOWN, StickerTriplet.TOP_EDGE),
+                    new StickerTripletLocation(FRONT, StickerTriplet.RIGHT_EDGE)
 
             };
             default -> throw new IllegalStateException("Unexpected value: " + this);

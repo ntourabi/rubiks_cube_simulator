@@ -24,8 +24,8 @@ class CubeInteractorServiceTests {
         //Act.
         cubeInteractorService.rotateFace(face, Turn.CLOCKWISE_QUARTER);
         //Assert.
-        Sticker[] stickers = face.getTiles();
-        Sticker[] expectedStickers = expectedFace.getTiles();
+        Sticker[] stickers = face.getStickers();
+        Sticker[] expectedStickers = expectedFace.getStickers();
         for (int i = 0; i < 9; i++) {
             assertEquals(stickers[i], expectedStickers[i]);
         }
@@ -47,8 +47,8 @@ class CubeInteractorServiceTests {
         //Act.
         cubeInteractorService.rotateFace(face, Turn.ANTICLOCKWISE_QUARTER);
         //Assert.
-        Sticker[] stickers = face.getTiles();
-        Sticker[] expectedStickers = expectedFace.getTiles();
+        Sticker[] stickers = face.getStickers();
+        Sticker[] expectedStickers = expectedFace.getStickers();
         for (int i = 0; i < 9; i++) {
             assertEquals(stickers[i], expectedStickers[i]);
         }
@@ -70,8 +70,8 @@ class CubeInteractorServiceTests {
         //Act.
         cubeInteractorService.rotateFace(face, Turn.HALF);
         //Assert.
-        Sticker[] stickers = face.getTiles();
-        Sticker[] expectedStickers = expectedFace.getTiles();
+        Sticker[] stickers = face.getStickers();
+        Sticker[] expectedStickers = expectedFace.getStickers();
         for (int i = 0; i < 9; i++) {
             assertEquals(stickers[i], expectedStickers[i]);
         }
@@ -84,10 +84,10 @@ class CubeInteractorServiceTests {
         Cube expectedCube = Cube.createSolvedCube();
         //The faces bordering UP are FRONT, RIGHT, BACK, LEFT.
         //Additionally, it is always the TOP_EDGE.
-        Sticker[] left = expectedCube.getFace(FaceName.LEFT).getTiles();
-        Sticker[] front = expectedCube.getFace(FaceName.FRONT).getTiles();
-        Sticker[] right = expectedCube.getFace(FaceName.RIGHT).getTiles();
-        Sticker[] back = expectedCube.getFace(FaceName.BACK).getTiles();
+        Sticker[] left = expectedCube.getFace(FaceName.LEFT).getStickers();
+        Sticker[] front = expectedCube.getFace(FaceName.FRONT).getStickers();
+        Sticker[] right = expectedCube.getFace(FaceName.RIGHT).getStickers();
+        Sticker[] back = expectedCube.getFace(FaceName.BACK).getStickers();
 
         System.out.println(originalCube.toString());
 

@@ -16,42 +16,43 @@ public class CubeInteractorServiceImpl implements CubeInteractorService {
      */
     @Override
     public void rotateFace(Face face, Turn turn) {
-        Sticker[] tiles = face.getTiles();
-        Sticker temp1 = tiles[0];
-        Sticker temp2 = tiles[1];
+        Sticker[] stickers = face.getStickers();
+        Sticker temp1 = stickers[0];
+        Sticker temp2 = stickers[1];
         if (turn == Turn.CLOCKWISE_QUARTER) {
-            tiles[0] = tiles[6];
-            tiles[6] = tiles[8];
-            tiles[8] = tiles[2];
-            tiles[2] = temp1;
+            stickers[0] = stickers[6];
+            stickers[6] = stickers[8];
+            stickers[8] = stickers[2];
+            stickers[2] = temp1;
 
-            tiles[1] = tiles[3];
-            tiles[3] = tiles[7];
-            tiles[7] = tiles[5];
-            tiles[5] = temp2;
+            stickers[1] = stickers[3];
+            stickers[3] = stickers[7];
+            stickers[7] = stickers[5];
+            stickers[5] = temp2;
         } else if (turn == Turn.ANTICLOCKWISE_QUARTER) {
-            tiles[0] = tiles[2];
-            tiles[2]  = tiles[8];
-            tiles[8] = tiles[6];
-            tiles[6] = temp1;
+            stickers[0] = stickers[2];
+            stickers[2]  = stickers[8];
+            stickers[8] = stickers[6];
+            stickers[6] = temp1;
 
-            tiles[1] = tiles[5];
-            tiles[5] = tiles[7];
-            tiles[7] = tiles[3];
-            tiles[3] = temp2;
+            stickers[1] = stickers[5];
+            stickers[5] = stickers[7];
+            stickers[7] = stickers[3];
+            stickers[3] = temp2;
         } else if (turn == Turn.HALF) {
-            tiles[0] = tiles[8];
-            tiles[8] = temp1;
-            temp1 = tiles[2];
-            tiles[2] = tiles[6];
-            tiles[6] = temp1;
+            stickers[0] = stickers[8];
+            stickers[8] = temp1;
+            temp1 = stickers[2];
+            stickers[2] = stickers[6];
+            stickers[6] = temp1;
 
-            tiles[1] = tiles[7];
-            tiles[7] = temp2;
-            temp2 = tiles[3];
-            tiles[3] = tiles[5];
-            tiles[5] = temp2;
+            stickers[1] = stickers[7];
+            stickers[7] = temp2;
+            temp2 = stickers[3];
+            stickers[3] = stickers[5];
+            stickers[5] = temp2;
         }
+        face.setStickers(stickers);
     }
 
     /**
@@ -63,19 +64,19 @@ public class CubeInteractorServiceImpl implements CubeInteractorService {
      */
     @Override
     public void rotateEdgesBorderingFace(Cube cube, FaceName faceName, Turn turn) {
-        //Recall that FaceEdge records tell us: which face + which three int indices.
-        //Recall that each set of edges is automatically ordered for a clockwise quarter rotation.
-        FaceEdge[] edges = faceName.getBorderingEdges();
-        //The exact 9 tiles of each of the four faces bordering our target face.
-        Sticker[] f1 = cube.getFace(edges[0].face()).getTiles();
-        Sticker[] f2 = cube.getFace(edges[1].face()).getTiles();
-        Sticker[] f3 = cube.getFace(edges[2].face()).getTiles();
-        Sticker[] f4 = cube.getFace(edges[3].face()).getTiles();
-        //Which tiles we want to specifically target corresponding to each face.
-        int[] f1_indices = edges[0].edgeType().getIndices();
-        int[] f2_indices = edges[1].edgeType().getIndices();
-        int[] f3_indices = edges[2].edgeType().getIndices();
-        int[] f4_indices = edges[3].edgeType().getIndices();
+        //Recall that StickerTripletLocation records tell us: which face + which three int indices.
+        //Recall that each set of triplets is automatically ordered for a clockwise quarter rotation.
+        StickerTripletLocation[] edges = faceName.getBorderingEdges();
+        //The exact 9 stickers of each of the four faces bordering our target face.
+        Sticker[] f1 = cube.getFace(edges[0].face()).getStickers();
+        Sticker[] f2 = cube.getFace(edges[1].face()).getStickers();
+        Sticker[] f3 = cube.getFace(edges[2].face()).getStickers();
+        Sticker[] f4 = cube.getFace(edges[3].face()).getStickers();
+        //Which stickers we want to specifically target corresponding to each face.
+        int[] f1_indices = edges[0].stickerTriplet().getIndices();
+        int[] f2_indices = edges[1].stickerTriplet().getIndices();
+        int[] f3_indices = edges[2].stickerTriplet().getIndices();
+        int[] f4_indices = edges[3].stickerTriplet().getIndices();
         //Save f1's edge.
         Sticker[] f1_temp = {f1[f1_indices[0]], f1[f1_indices[1]], f1[f1_indices[2]]};
 
@@ -133,6 +134,11 @@ public class CubeInteractorServiceImpl implements CubeInteractorService {
             f2[f2_indices[1]] = f4[1];
             f2[f2_indices[2]] = f4[2];
         }
+        //The exact 9 stickers of each of the four faces bordering our target face.
+        cube.getFace(edges[0].face()).setStickers(f1);
+        cube.getFace(edges[1].face()).setStickers(f2);
+        cube.getFace(edges[2].face()).setStickers(f3);
+        cube.getFace(edges[3].face()).setStickers(f4);
     }
 
     /**

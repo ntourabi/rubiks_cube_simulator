@@ -49,7 +49,7 @@ public class WhiteCrossSolver implements SolvingStage {
         Map<FaceName, Face> faces = cube.getFaces();
         for (FaceName faceName : faces.keySet()) {
             Face face = faces.get(faceName);
-            if (face.getTile(5) == Sticker.WHITE) return faceName;
+            if (face.getSticker(5) == Sticker.WHITE) return faceName;
         }
         throw new RuntimeException("Couldn't find white face on cube.");
     }
@@ -60,7 +60,7 @@ public class WhiteCrossSolver implements SolvingStage {
      * @return boolean - Whether a white cross has been fully formed.
      */
     private boolean whiteCrossComplete(Face whiteFace) {
-        Sticker[] tiles = whiteFace.getTiles();
+        Sticker[] tiles = whiteFace.getStickers();
         return tiles[1] == Sticker.WHITE && tiles[3] == Sticker.WHITE && tiles[5] == Sticker.WHITE && tiles[7] == Sticker.WHITE;
     }
 
@@ -78,10 +78,10 @@ public class WhiteCrossSolver implements SolvingStage {
         Map<FaceName, Face> faces = cube.getFaces();
         for (FaceName face : faces.keySet()) {
             if (faces.get(face) == whiteFace) continue;
-            if (faces.get(face).getTile(1) == Sticker.WHITE) return new StickerLocation(face, 1);
-            if (faces.get(face).getTile(3) == Sticker.WHITE) return new StickerLocation(face, 3);
-            if (faces.get(face).getTile(5) == Sticker.WHITE) return new StickerLocation(face, 5);
-            if (faces.get(face).getTile(7) == Sticker.WHITE) return new StickerLocation(face, 7);
+            if (faces.get(face).getSticker(1) == Sticker.WHITE) return new StickerLocation(face, 1);
+            if (faces.get(face).getSticker(3) == Sticker.WHITE) return new StickerLocation(face, 3);
+            if (faces.get(face).getSticker(5) == Sticker.WHITE) return new StickerLocation(face, 5);
+            if (faces.get(face).getSticker(7) == Sticker.WHITE) return new StickerLocation(face, 7);
         }
         throw new RuntimeException("Couldn't find unsolved white edge on non-white faces.");
     }
@@ -93,7 +93,7 @@ public class WhiteCrossSolver implements SolvingStage {
      * @return StickerLocation - A way of pinpointing the exact tile's location on the cube.
      */
     private StickerLocation selectUnsolvedWhiteEdgeTile(Cube cube, FaceName whiteFace) {
-        Sticker[] tiles = cube.getFace(whiteFace).getTiles();
+        Sticker[] tiles = cube.getFace(whiteFace).getStickers();
         if (tiles[1] != Sticker.WHITE) return new StickerLocation(whiteFace, 1);
         if (tiles[3] != Sticker.WHITE) return new StickerLocation(whiteFace, 3);
         if (tiles[5] != Sticker.WHITE) return new StickerLocation(whiteFace, 5);
@@ -127,13 +127,13 @@ public class WhiteCrossSolver implements SolvingStage {
         while (!currentLocation.equals(targetLocation)) {
             if (currentLocation.name() == FaceName.DOWN) {
                 //We'd be destroying a solved white tile if the current target is vertically 3 tiles away.
-                if (currentLocation.tileIndex() == 1) {
+                if (currentLocation.stickerIndex() == 1) {
 
-                } else if (currentLocation.tileIndex() == 3) {
+                } else if (currentLocation.stickerIndex() == 3) {
 
-                } else if (currentLocation.tileIndex() == 5) {
+                } else if (currentLocation.stickerIndex() == 5) {
 
-                } else if (currentLocation.tileIndex() == 7) {
+                } else if (currentLocation.stickerIndex() == 7) {
 
                 }
             } else {
