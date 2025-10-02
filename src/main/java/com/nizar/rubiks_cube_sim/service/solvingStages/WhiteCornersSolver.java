@@ -31,13 +31,13 @@ public class WhiteCornersSolver implements SolvingStage {
         Map<FaceName, Face> faces = cube.getFaces();
         for (FaceName faceName : faces.keySet()) {
             Face face = faces.get(faceName);
-            if (face.getTile(4) == Sticker.WHITE) return faceName;
+            if (face.getSticker(4) == Sticker.WHITE) return faceName;
         }
         throw new RuntimeException("No white face found");
     }
 
     private boolean whiteCornersSolved(Cube cube, FaceName whiteFace) {
         Face face = cube.getFace(whiteFace);
-        return face.getTile(0) == Sticker.WHITE && face.getTile(2) == Sticker.WHITE && face.getTile(6) == Sticker.WHITE && face.getTile(8) == Sticker.WHITE;
+        return face.getSticker(0) == Sticker.WHITE && face.getSticker(2) == Sticker.WHITE && face.getSticker(6) == Sticker.WHITE && face.getSticker(8) == Sticker.WHITE;
     }
 }

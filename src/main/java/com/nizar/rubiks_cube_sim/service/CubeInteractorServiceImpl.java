@@ -130,9 +130,9 @@ public class CubeInteractorServiceImpl implements CubeInteractorService {
             f4[f4_indices[1]] = f2[f2_indices[1]];
             f4[f4_indices[2]] = f2[f2_indices[2]];
             //Write f4 (temp) to f2.
-            f2[f2_indices[0]] = f4[0];
-            f2[f2_indices[1]] = f4[1];
-            f2[f2_indices[2]] = f4[2];
+            f2[f2_indices[0]] = f4_temp[0];
+            f2[f2_indices[1]] = f4_temp[1];
+            f2[f2_indices[2]] = f4_temp[2];
         }
         //The exact 9 stickers of each of the four faces bordering our target face.
         cube.getFace(edges[0].face()).setStickers(f1);

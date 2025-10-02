@@ -49,7 +49,7 @@ public class WhiteCrossSolver implements SolvingStage {
         Map<FaceName, Face> faces = cube.getFaces();
         for (FaceName faceName : faces.keySet()) {
             Face face = faces.get(faceName);
-            if (face.getSticker(5) == Sticker.WHITE) return faceName;
+            if (face.getSticker(4) == Sticker.WHITE) return faceName;
         }
         throw new RuntimeException("Couldn't find white face on cube.");
     }
@@ -101,7 +101,14 @@ public class WhiteCrossSolver implements SolvingStage {
         throw new RuntimeException("Couldn't find unsolved white edge on white face.");
     }
 
-    private void findWhiteEdge_SecondColour(Cube cube, FaceName whiteFace) {}
+    /**
+     * Edge cubies have two stickers.
+     * The point of this method is to find the colour of the second sticker on a cubie,
+     * where the first sticker is white.
+     * @param cube - The cube we are searching.
+     * @param stickerLocation - The location of the white sticker on the target edge cubie.
+     */
+    private void findWhiteEdge_SecondColour(Cube cube, StickerLocation stickerLocation) {}
 
     /**
      * This method will take a misplaced white edge tile and put it in the correct spot.
