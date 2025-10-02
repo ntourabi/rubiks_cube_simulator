@@ -1,8 +1,14 @@
 package com.nizar.rubiks_cube_sim.model;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * MODEL CLASS: Cube
+ * A class representing the standard 3x3 Rubik's Cube.
+ * Cubes have exactly 6 individually named faces.
+ */
 public class Cube {
     private Map<FaceName, Face> faces;
 
@@ -25,8 +31,12 @@ public class Cube {
         return new Cube(solvedFaces);
     }
 
+    /**
+     * Get an unmodifiable map of all 6 faces on the cube.
+     * @return - Unmodifiable faces map.
+     */
     public Map<FaceName, Face> getFaces() {
-        return faces;
+        return Collections.unmodifiableMap(faces);
     }
 
     public void setFaces(Map<FaceName, Face> faces) {
@@ -44,22 +54,22 @@ public class Cube {
     @Override
     public String toString() {
         //Top Layer
-        String str = getFace(FaceName.UP).toString();
+        StringBuilder str = new StringBuilder(getFace(FaceName.UP).toString());
         //Middle Layers
-        Sticker[] front = getFace(FaceName.FRONT).getTiles();
-        Sticker[] right = getFace(FaceName.RIGHT).getTiles();
-        Sticker[] back = getFace(FaceName.BACK).getTiles();
-        Sticker[] left = getFace(FaceName.LEFT).getTiles();
+        Sticker[] front = getFace(FaceName.FRONT).getStickers();
+        Sticker[] right = getFace(FaceName.RIGHT).getStickers();
+        Sticker[] back = getFace(FaceName.BACK).getStickers();
+        Sticker[] left = getFace(FaceName.LEFT).getStickers();
         for (int i = 0; i < 3; i++) {
-            str += front[3*i].toString() + front[3*i + 1].toString() + front[3*i + 2].toString() + " ";
-            str += right[3*i].toString() + right[3*i + 1].toString() + right[3*i + 2].toString() + " ";
-            str += back[3*i].toString() + back[3*i + 1].toString() + back[3*i + 2].toString() + " ";
-            str += left[3*i].toString() + left[3*i + 1].toString() + left[3*i + 2].toString() + "\n";
+            str.append(front[3 * i].toString()).append(front[3 * i + 1].toString()).append(front[3 * i + 2].toString()).append(" ");
+            str.append(right[3 * i].toString()).append(right[3 * i + 1].toString()).append(right[3 * i + 2].toString()).append(" ");
+            str.append(back[3 * i].toString()).append(back[3 * i + 1].toString()).append(back[3 * i + 2].toString()).append(" ");
+            str.append(left[3 * i].toString()).append(left[3 * i + 1].toString()).append(left[3 * i + 2].toString()).append("\n");
         }
         //Bottom Layer
-        str += getFace(FaceName.DOWN).toString();
+        str.append(getFace(FaceName.DOWN).toString());
 
-        return str;
+        return str.toString();
     }
 }
 
