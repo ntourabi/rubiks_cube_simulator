@@ -32,8 +32,8 @@ public class WhiteCrossSolver implements SolvingStage {
         StringBuilder sequence = new StringBuilder();
 
         while (!whiteCrossComplete(cube.getFace(whiteFace))) {
-            TileLocation startingLocation = searchCubeForWhiteEdgeTile(cube, cube.getFace(whiteFace));
-            TileLocation targetLocation = selectUnsolvedWhiteEdgeTile(cube, whiteFace);
+            StickerLocation startingLocation = searchCubeForWhiteEdgeTile(cube, cube.getFace(whiteFace));
+            StickerLocation targetLocation = selectUnsolvedWhiteEdgeTile(cube, whiteFace);
             sequence.append(makeMove(cube, startingLocation, targetLocation));
         }
 
@@ -42,14 +42,14 @@ public class WhiteCrossSolver implements SolvingStage {
 
     /**
      * This method finds the white face by checking all faces on a given cube.
-     * @param cube
+     * @param cube - The cube to search for a white face on.
      * @return FaceName - the name of the white face i.e. the face with a white middle tile.
      */
     private FaceName getWhiteFace(Cube cube) {
         Map<FaceName, Face> faces = cube.getFaces();
         for (FaceName faceName : faces.keySet()) {
             Face face = faces.get(faceName);
-            if (face.getTile(5) == Colour.WHITE) return faceName;
+            if (face.getTile(5) == Sticker.WHITE) return faceName;
         }
         throw new RuntimeException("Couldn't find white face on cube.");
     }
@@ -60,8 +60,8 @@ public class WhiteCrossSolver implements SolvingStage {
      * @return boolean - Whether a white cross has been fully formed.
      */
     private boolean whiteCrossComplete(Face whiteFace) {
-        Colour[] tiles = whiteFace.getTiles();
-        return tiles[1] == Colour.WHITE && tiles[3] == Colour.WHITE && tiles[5] == Colour.WHITE && tiles[7] == Colour.WHITE;
+        Sticker[] tiles = whiteFace.getTiles();
+        return tiles[1] == Sticker.WHITE && tiles[3] == Sticker.WHITE && tiles[5] == Sticker.WHITE && tiles[7] == Sticker.WHITE;
     }
 
     /**
@@ -72,16 +72,16 @@ public class WhiteCrossSolver implements SolvingStage {
      *
      * @param cube - The cube we are currently trying to solve.
      * @param whiteFace - A reference to the face with a white middle tile.
-     * @return TileLocation - The name of the face, and the tile index (0-8).
+     * @return StickerLocation - The name of the face, and the tile index (0-8).
      */
-    private TileLocation searchCubeForWhiteEdgeTile(Cube cube, Face whiteFace) {
+    private StickerLocation searchCubeForWhiteEdgeTile(Cube cube, Face whiteFace) {
         Map<FaceName, Face> faces = cube.getFaces();
         for (FaceName face : faces.keySet()) {
             if (faces.get(face) == whiteFace) continue;
-            if (faces.get(face).getTile(1) == Colour.WHITE) return new TileLocation(face, 1);
-            if (faces.get(face).getTile(3) == Colour.WHITE) return new TileLocation(face, 3);
-            if (faces.get(face).getTile(5) == Colour.WHITE) return new TileLocation(face, 5);
-            if (faces.get(face).getTile(7) == Colour.WHITE) return new TileLocation(face, 7);
+            if (faces.get(face).getTile(1) == Sticker.WHITE) return new StickerLocation(face, 1);
+            if (faces.get(face).getTile(3) == Sticker.WHITE) return new StickerLocation(face, 3);
+            if (faces.get(face).getTile(5) == Sticker.WHITE) return new StickerLocation(face, 5);
+            if (faces.get(face).getTile(7) == Sticker.WHITE) return new StickerLocation(face, 7);
         }
         throw new RuntimeException("Couldn't find unsolved white edge on non-white faces.");
     }
@@ -90,16 +90,18 @@ public class WhiteCrossSolver implements SolvingStage {
      * This method picks an edge tile to solve from the white face.
      * @param cube - The cube we are trying to solve.
      * @param whiteFace - The name of the face with a white middle tile.
-     * @return TileLocation - A way of pinpointing the exact tile's location on the cube.
+     * @return StickerLocation - A way of pinpointing the exact tile's location on the cube.
      */
-    private TileLocation selectUnsolvedWhiteEdgeTile(Cube cube, FaceName whiteFace) {
-        Colour[] tiles = cube.getFace(whiteFace).getTiles();
-        if (tiles[1] != Colour.WHITE) return new TileLocation(whiteFace, 1);
-        if (tiles[3] != Colour.WHITE) return new TileLocation(whiteFace, 3);
-        if (tiles[5] != Colour.WHITE) return new TileLocation(whiteFace, 5);
-        if (tiles[7] != Colour.WHITE) return new TileLocation(whiteFace, 7);
+    private StickerLocation selectUnsolvedWhiteEdgeTile(Cube cube, FaceName whiteFace) {
+        Sticker[] tiles = cube.getFace(whiteFace).getTiles();
+        if (tiles[1] != Sticker.WHITE) return new StickerLocation(whiteFace, 1);
+        if (tiles[3] != Sticker.WHITE) return new StickerLocation(whiteFace, 3);
+        if (tiles[5] != Sticker.WHITE) return new StickerLocation(whiteFace, 5);
+        if (tiles[7] != Sticker.WHITE) return new StickerLocation(whiteFace, 7);
         throw new RuntimeException("Couldn't find unsolved white edge on white face.");
     }
+
+    private void findWhiteEdge_SecondColour(Cube cube, FaceName whiteFace) {}
 
     /**
      * This method will take a misplaced white edge tile and put it in the correct spot.
@@ -119,7 +121,7 @@ public class WhiteCrossSolver implements SolvingStage {
      * @param targetLocation - Where we want our current white tile to end up.
      * @return String - The moves we took to solve the edge piece, using standard cube notation.
      */
-    private String makeMove(Cube cube, TileLocation currentLocation, TileLocation targetLocation) {
+    private String makeMove(Cube cube, StickerLocation currentLocation, StickerLocation targetLocation) {
         String moves = "";
         //We need to take care to avoid destroying already solved white edges.
         while (!currentLocation.equals(targetLocation)) {

@@ -1,10 +1,10 @@
 package com.nizar.rubiks_cube_sim.model;
 
 /**
- * ENUM: Colour
+ * ENUM: Sticker
  * All possible types of tile colour on a Rubik's cube.
  */
-public enum Colour {
+public enum Sticker {
     RED,
     ORANGE,
     YELLOW,

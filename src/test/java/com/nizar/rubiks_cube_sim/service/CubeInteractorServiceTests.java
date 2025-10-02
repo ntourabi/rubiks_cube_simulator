@@ -11,69 +11,69 @@ class CubeInteractorServiceTests {
     @Test
     void rotateFace_clockwise_success() {
         //Arrange.
-        Face face = new Face(new Colour[] {
-                Colour.RED, Colour.BLUE, Colour.RED,
-                Colour.YELLOW, Colour.ORANGE, Colour.YELLOW,
-                Colour.GREEN, Colour.WHITE, Colour.GREEN
+        Face face = new Face(new Sticker[] {
+                Sticker.RED, Sticker.BLUE, Sticker.RED,
+                Sticker.YELLOW, Sticker.ORANGE, Sticker.YELLOW,
+                Sticker.GREEN, Sticker.WHITE, Sticker.GREEN
         });
-        Face expectedFace = new Face(new Colour[] {
-           Colour.GREEN, Colour.YELLOW, Colour.RED,
-           Colour.WHITE, Colour.ORANGE, Colour.BLUE,
-           Colour.GREEN, Colour.YELLOW, Colour.RED
+        Face expectedFace = new Face(new Sticker[] {
+           Sticker.GREEN, Sticker.YELLOW, Sticker.RED,
+           Sticker.WHITE, Sticker.ORANGE, Sticker.BLUE,
+           Sticker.GREEN, Sticker.YELLOW, Sticker.RED
         });
         //Act.
         cubeInteractorService.rotateFace(face, Turn.CLOCKWISE_QUARTER);
         //Assert.
-        Colour[] colours = face.getTiles();
-        Colour[] expectedColours = expectedFace.getTiles();
+        Sticker[] stickers = face.getTiles();
+        Sticker[] expectedStickers = expectedFace.getTiles();
         for (int i = 0; i < 9; i++) {
-            assertEquals(colours[i], expectedColours[i]);
+            assertEquals(stickers[i], expectedStickers[i]);
         }
     }
 
     @Test
     void rotateFace_counterClockwise_success() {
         //Arrange.
-        Face face = new Face(new Colour[] {
-                Colour.RED, Colour.BLUE, Colour.RED,
-                Colour.YELLOW, Colour.ORANGE, Colour.YELLOW,
-                Colour.GREEN, Colour.WHITE, Colour.GREEN
+        Face face = new Face(new Sticker[] {
+                Sticker.RED, Sticker.BLUE, Sticker.RED,
+                Sticker.YELLOW, Sticker.ORANGE, Sticker.YELLOW,
+                Sticker.GREEN, Sticker.WHITE, Sticker.GREEN
         });
-        Face expectedFace = new Face(new Colour[] {
-                Colour.RED, Colour.YELLOW, Colour.GREEN,
-                Colour.BLUE, Colour.ORANGE, Colour.WHITE,
-                Colour.RED, Colour.YELLOW, Colour.GREEN
+        Face expectedFace = new Face(new Sticker[] {
+                Sticker.RED, Sticker.YELLOW, Sticker.GREEN,
+                Sticker.BLUE, Sticker.ORANGE, Sticker.WHITE,
+                Sticker.RED, Sticker.YELLOW, Sticker.GREEN
         });
         //Act.
         cubeInteractorService.rotateFace(face, Turn.ANTICLOCKWISE_QUARTER);
         //Assert.
-        Colour[] colours = face.getTiles();
-        Colour[] expectedColours = expectedFace.getTiles();
+        Sticker[] stickers = face.getTiles();
+        Sticker[] expectedStickers = expectedFace.getTiles();
         for (int i = 0; i < 9; i++) {
-            assertEquals(colours[i], expectedColours[i]);
+            assertEquals(stickers[i], expectedStickers[i]);
         }
     }
 
     @Test
     void rotateFace_counterCounterClockwise_success() {
         //Arrange.
-        Face face = new Face(new Colour[] {
-                Colour.RED, Colour.BLUE, Colour.RED,
-                Colour.YELLOW, Colour.ORANGE, Colour.YELLOW,
-                Colour.GREEN, Colour.WHITE, Colour.GREEN
+        Face face = new Face(new Sticker[] {
+                Sticker.RED, Sticker.BLUE, Sticker.RED,
+                Sticker.YELLOW, Sticker.ORANGE, Sticker.YELLOW,
+                Sticker.GREEN, Sticker.WHITE, Sticker.GREEN
         });
-        Face expectedFace = new Face(new Colour[] {
-                Colour.GREEN, Colour.WHITE, Colour.GREEN,
-                Colour.YELLOW, Colour.ORANGE, Colour.YELLOW,
-                Colour.RED, Colour.BLUE, Colour.RED
+        Face expectedFace = new Face(new Sticker[] {
+                Sticker.GREEN, Sticker.WHITE, Sticker.GREEN,
+                Sticker.YELLOW, Sticker.ORANGE, Sticker.YELLOW,
+                Sticker.RED, Sticker.BLUE, Sticker.RED
         });
         //Act.
         cubeInteractorService.rotateFace(face, Turn.HALF);
         //Assert.
-        Colour[] colours = face.getTiles();
-        Colour[] expectedColours = expectedFace.getTiles();
+        Sticker[] stickers = face.getTiles();
+        Sticker[] expectedStickers = expectedFace.getTiles();
         for (int i = 0; i < 9; i++) {
-            assertEquals(colours[i], expectedColours[i]);
+            assertEquals(stickers[i], expectedStickers[i]);
         }
     }
 
@@ -84,10 +84,10 @@ class CubeInteractorServiceTests {
         Cube expectedCube = Cube.createSolvedCube();
         //The faces bordering UP are FRONT, RIGHT, BACK, LEFT.
         //Additionally, it is always the TOP_EDGE.
-        Colour[] left = expectedCube.getFace(FaceName.LEFT).getTiles();
-        Colour[] front = expectedCube.getFace(FaceName.FRONT).getTiles();
-        Colour[] right = expectedCube.getFace(FaceName.RIGHT).getTiles();
-        Colour[] back = expectedCube.getFace(FaceName.BACK).getTiles();
+        Sticker[] left = expectedCube.getFace(FaceName.LEFT).getTiles();
+        Sticker[] front = expectedCube.getFace(FaceName.FRONT).getTiles();
+        Sticker[] right = expectedCube.getFace(FaceName.RIGHT).getTiles();
+        Sticker[] back = expectedCube.getFace(FaceName.BACK).getTiles();
 
         System.out.println(originalCube.toString());
 

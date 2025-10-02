@@ -15,13 +15,13 @@ public class Cube {
 
     //Follows traditional cube convention.
     public static Cube createSolvedCube() {
-        Map<FaceName, Face> solvedFaces = new HashMap<FaceName, Face>();
-        solvedFaces.put(FaceName.FRONT, Face.createSolvedFace((Colour.GREEN)));
-        solvedFaces.put(FaceName.BACK, Face.createSolvedFace((Colour.BLUE)));
-        solvedFaces.put(FaceName.RIGHT, Face.createSolvedFace((Colour.RED)));
-        solvedFaces.put(FaceName.LEFT, Face.createSolvedFace((Colour.ORANGE)));
-        solvedFaces.put(FaceName.UP, Face.createSolvedFace((Colour.WHITE)));
-        solvedFaces.put(FaceName.DOWN, Face.createSolvedFace((Colour.YELLOW)));
+        Map<FaceName, Face> solvedFaces = new HashMap<>();
+        solvedFaces.put(FaceName.FRONT, Face.createSolvedFace((Sticker.GREEN)));
+        solvedFaces.put(FaceName.BACK, Face.createSolvedFace((Sticker.BLUE)));
+        solvedFaces.put(FaceName.RIGHT, Face.createSolvedFace((Sticker.RED)));
+        solvedFaces.put(FaceName.LEFT, Face.createSolvedFace((Sticker.ORANGE)));
+        solvedFaces.put(FaceName.UP, Face.createSolvedFace((Sticker.WHITE)));
+        solvedFaces.put(FaceName.DOWN, Face.createSolvedFace((Sticker.YELLOW)));
         return new Cube(solvedFaces);
     }
 
@@ -46,10 +46,10 @@ public class Cube {
         //Top Layer
         String str = getFace(FaceName.UP).toString();
         //Middle Layers
-        Colour[] front = getFace(FaceName.FRONT).getTiles();
-        Colour[] right = getFace(FaceName.RIGHT).getTiles();
-        Colour[] back = getFace(FaceName.BACK).getTiles();
-        Colour[] left = getFace(FaceName.LEFT).getTiles();
+        Sticker[] front = getFace(FaceName.FRONT).getTiles();
+        Sticker[] right = getFace(FaceName.RIGHT).getTiles();
+        Sticker[] back = getFace(FaceName.BACK).getTiles();
+        Sticker[] left = getFace(FaceName.LEFT).getTiles();
         for (int i = 0; i < 3; i++) {
             str += front[3*i].toString() + front[3*i + 1].toString() + front[3*i + 2].toString() + " ";
             str += right[3*i].toString() + right[3*i + 1].toString() + right[3*i + 2].toString() + " ";

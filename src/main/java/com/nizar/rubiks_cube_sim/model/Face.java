@@ -9,9 +9,9 @@ package com.nizar.rubiks_cube_sim.model;
 public class Face {
     private static final int FACE_SIZE = 9;
 
-    private Colour[] tiles;
+    private Sticker[] tiles;
 
-    public Face(Colour[] tiles) {
+    public Face(Sticker[] tiles) {
         if (tiles == null) {
             throw new IllegalArgumentException("Face object cannot have 'null' tiles.");
         } else if (tiles.length != FACE_SIZE) {
@@ -20,24 +20,24 @@ public class Face {
         this.tiles = tiles.clone();
     }
 
-    public Colour[] getTiles() {
+    public Sticker[] getTiles() {
         return tiles;
     }
 
-    public void setTiles(Colour[] tiles) {
+    public void setTiles(Sticker[] tiles) {
         this.tiles = tiles;
     }
 
-    public Colour getTile(int index) {
+    public Sticker getTile(int index) {
         return tiles[index];
     }
 
-    public void setTile(int index, Colour tile) {
+    public void setTile(int index, Sticker tile) {
         tiles[index] = tile;
     }
 
-    public static Face createSolvedFace(Colour colour) {
-        return new Face(new Colour[] {colour, colour, colour, colour, colour, colour, colour, colour, colour});
+    public static Face createSolvedFace(Sticker sticker) {
+        return new Face(new Sticker[] {sticker, sticker, sticker, sticker, sticker, sticker, sticker, sticker, sticker});
     }
 
     @Override

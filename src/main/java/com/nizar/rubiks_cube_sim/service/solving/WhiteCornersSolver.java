@@ -1,6 +1,6 @@
 package com.nizar.rubiks_cube_sim.service.solving;
 
-import com.nizar.rubiks_cube_sim.model.Colour;
+import com.nizar.rubiks_cube_sim.model.Sticker;
 import com.nizar.rubiks_cube_sim.model.Cube;
 import com.nizar.rubiks_cube_sim.model.Face;
 import com.nizar.rubiks_cube_sim.model.FaceName;
@@ -31,13 +31,13 @@ public class WhiteCornersSolver implements SolvingStage {
         Map<FaceName, Face> faces = cube.getFaces();
         for (FaceName faceName : faces.keySet()) {
             Face face = faces.get(faceName);
-            if (face.getTile(4) == Colour.WHITE) return faceName;
+            if (face.getTile(4) == Sticker.WHITE) return faceName;
         }
         throw new RuntimeException("No white face found");
     }
 
     private boolean whiteCornersSolved(Cube cube, FaceName whiteFace) {
         Face face = cube.getFace(whiteFace);
-        return face.getTile(0) == Colour.WHITE && face.getTile(2) == Colour.WHITE && face.getTile(6) == Colour.WHITE && face.getTile(8) == Colour.WHITE;
+        return face.getTile(0) == Sticker.WHITE && face.getTile(2) == Sticker.WHITE && face.getTile(6) == Sticker.WHITE && face.getTile(8) == Sticker.WHITE;
     }
 }
