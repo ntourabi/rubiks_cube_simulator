@@ -1,4 +1,4 @@
-package com.nizar.rubiks_cube_sim.service.solving;
+package com.nizar.rubiks_cube_sim.service.solvingStages;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

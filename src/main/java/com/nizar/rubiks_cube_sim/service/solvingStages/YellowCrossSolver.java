@@ -1,4 +1,4 @@
-package com.nizar.rubiks_cube_sim.service.solving;
+package com.nizar.rubiks_cube_sim.service.solvingStages;
 
 import com.nizar.rubiks_cube_sim.model.Cube;
 import com.nizar.rubiks_cube_sim.service.CubeInteractorService;

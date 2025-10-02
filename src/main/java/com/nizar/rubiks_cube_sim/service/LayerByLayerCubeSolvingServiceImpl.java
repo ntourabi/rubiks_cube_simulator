@@ -1,7 +1,7 @@
 package com.nizar.rubiks_cube_sim.service;
 
 import com.nizar.rubiks_cube_sim.model.Cube;
-import com.nizar.rubiks_cube_sim.service.solving.*;
+import com.nizar.rubiks_cube_sim.service.solvingStages.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

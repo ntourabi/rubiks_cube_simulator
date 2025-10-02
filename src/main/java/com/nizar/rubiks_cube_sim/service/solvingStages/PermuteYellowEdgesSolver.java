@@ -1,4 +1,4 @@
-package com.nizar.rubiks_cube_sim.service.solving;
+package com.nizar.rubiks_cube_sim.service.solvingStages;
 
 import com.nizar.rubiks_cube_sim.model.Cube;
 import com.nizar.rubiks_cube_sim.service.CubeInteractorService;
@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MiddleLayerEdgesSolver implements SolvingStage {
+public class PermuteYellowEdgesSolver implements SolvingStage {
 
     CubeInteractorService cubeInteractorService;
 
     @Autowired
-    public MiddleLayerEdgesSolver(CubeInteractorService cubeInteractorService) {
+    public PermuteYellowEdgesSolver(CubeInteractorService cubeInteractorService) {
         this.cubeInteractorService = cubeInteractorService;
     }
 
