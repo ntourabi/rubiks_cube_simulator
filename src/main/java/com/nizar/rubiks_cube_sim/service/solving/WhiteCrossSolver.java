@@ -3,7 +3,6 @@ package com.nizar.rubiks_cube_sim.service.solving;
 import com.nizar.rubiks_cube_sim.model.*;
 import com.nizar.rubiks_cube_sim.service.CubeInteractorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -104,10 +103,12 @@ public class WhiteCrossSolver implements SolvingStage {
 
     /**
      * This method will take a misplaced white edge tile and put it in the correct spot.
+     *
      * We can put an unsolved white edge into place by:
      *  - Identifying any target tile with a missing white edge (targetLocation)
      *  - Selecting any unsolved white edge piece (currentLocation)
      *  - Finding the sequence of moves necessary to move it into place.
+     *
      *  We'll call the white face the top (U). The process for moving a white edge tile is as follows:
      *  - If it's on the bottom face (D), move it to the middle faces (L/F/R/B).
      *  - Move the edge to index 7 of any middle face adjacent to the face touching the targetLocation.
@@ -123,7 +124,16 @@ public class WhiteCrossSolver implements SolvingStage {
         //We need to take care to avoid destroying already solved white edges.
         while (!currentLocation.equals(targetLocation)) {
             if (currentLocation.name() == FaceName.DOWN) {
+                //We'd be destroying a solved white tile if the current target is vertically 3 tiles away.
+                if (currentLocation.tileIndex() == 1) {
 
+                } else if (currentLocation.tileIndex() == 3) {
+
+                } else if (currentLocation.tileIndex() == 5) {
+
+                } else if (currentLocation.tileIndex() == 7) {
+
+                }
             } else {
 
             }
