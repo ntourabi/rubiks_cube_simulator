@@ -7,7 +7,8 @@ import java.util.Map;
 /**
  * MODEL CLASS: Cube
  * A class representing the standard 3x3 Rubik's Cube.
- * Cubes have exactly 6 individually named faces.
+ * Cubes have exactly 6 individually named faces (FRONT, BACK, TOP, BOTTOM, RIGHT, LEFT)
+ * Solving algorithms will be applied to the cube model to generate solutions.
  */
 public class Cube {
     private Map<FaceName, Face> faces;
@@ -19,7 +20,12 @@ public class Cube {
         this.faces = new HashMap<>(faces);
     }
 
-    //Follows traditional cube convention.
+    /**
+     * Creates a solved Rubik's Cube.
+     * The face/colour mapping matches standard cubing convention. For example:
+     * - FRONT is GREEN, BACK is BLUE, RIGHT is RED, etc...
+     * @return reference to the newly generated solved Rubik's Cube.
+     */
     public static Cube createSolvedCube() {
         Map<FaceName, Face> solvedFaces = new HashMap<>();
         solvedFaces.put(FaceName.FRONT, Face.createSolvedFace((Sticker.GREEN)));
@@ -51,10 +57,18 @@ public class Cube {
         faces.put(faceName, face);
     }
 
+    /**
+     * Generates a human-readable visual representation of the Cube.
+     * The top square naturally represents the TOP of the cube.
+     * The middle 4 squares represent FRONT, RIGHT, BACK, LEFT from left-to-right.
+     * The bottom square naturally represents the BOTTOM of the cube.
+     * @return Cube as String.
+     */
     @Override
     public String toString() {
         //Top Layer
         StringBuilder str = new StringBuilder(getFace(FaceName.UP).toString());
+
         //Middle Layers
         Sticker[] front = getFace(FaceName.FRONT).getStickers();
         Sticker[] right = getFace(FaceName.RIGHT).getStickers();
@@ -66,6 +80,7 @@ public class Cube {
             str.append(back[3 * i].toString()).append(back[3 * i + 1].toString()).append(back[3 * i + 2].toString()).append(" ");
             str.append(left[3 * i].toString()).append(left[3 * i + 1].toString()).append(left[3 * i + 2].toString()).append("\n");
         }
+
         //Bottom Layer
         str.append(getFace(FaceName.DOWN).toString());
 

@@ -1,7 +1,10 @@
 package com.nizar.rubiks_cube_sim.model;
 
-//What's clockwise depends on the way you look at the cube.
-//Assume you're looking directly at the face you're rotating.
+/**
+ * Model (Enum): Turn
+ * A person's definition of clockwise can change depending on the way they look at the cube.
+ * We will always assume we're directly looking at the FRONT face for rotations.
+ */
 public enum Turn {
     CLOCKWISE_QUARTER(""),
     ANTICLOCKWISE_QUARTER("'"),

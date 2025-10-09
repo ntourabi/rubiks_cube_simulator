@@ -19,12 +19,13 @@ public enum FaceName {
     }
 
     /**
-     * Cube net:
-     *   U
-     * L F R B
-     *   D
+     * Cube net (each letter is a face):
+     * U
+     * F R B L
+     * D
      * Each face numbered 1-9, left to right and top to bottom.
-     * Each array of FaceEdges is deliberately pre-ordered for easy swapping / rotations. In-order traversal = Right Quarter Turn.
+     * Each array of FaceEdges is deliberately pre-ordered for easy swapping / rotations.
+     * In-order traversal = Right Quarter Turn.
      * @return all the edges that border a particular face.
      */
     public StickerTripletLocation[] getBorderingEdges() {

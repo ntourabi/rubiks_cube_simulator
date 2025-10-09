@@ -18,6 +18,10 @@ public class CubeScrambleServiceImpl implements CubeScrambleService {
         this.cubeInteractorService = cubeInteractorService;
     }
 
+    /**
+     * Creates a new cube and applies randomly generated moves to it.
+     * @return scrambled Rubik's Cube.
+     */
     @Override
     public Cube createScrambledCube() {
         Cube cube = Cube.createSolvedCube();
