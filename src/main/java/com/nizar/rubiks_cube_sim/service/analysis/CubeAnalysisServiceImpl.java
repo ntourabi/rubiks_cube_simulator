@@ -1,4 +1,4 @@
-package com.nizar.rubiks_cube_sim.service;
+package com.nizar.rubiks_cube_sim.service.analysis;
 
 import com.nizar.rubiks_cube_sim.model.Cube;
 import com.nizar.rubiks_cube_sim.model.Face;
