@@ -1,7 +1,7 @@
 package com.nizar.rubiks_cube_sim.service.solvingStages;
 
 import com.nizar.rubiks_cube_sim.model.*;
-import com.nizar.rubiks_cube_sim.service.CubeInteractorService;
+import com.nizar.rubiks_cube_sim.service.interaction.CubeInteractorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

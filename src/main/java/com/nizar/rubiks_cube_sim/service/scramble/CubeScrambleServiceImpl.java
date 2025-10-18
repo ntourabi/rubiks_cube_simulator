@@ -1,8 +1,9 @@
-package com.nizar.rubiks_cube_sim.service;
+package com.nizar.rubiks_cube_sim.service.scramble;
 
 import com.nizar.rubiks_cube_sim.model.Cube;
 import com.nizar.rubiks_cube_sim.model.FaceName;
 import com.nizar.rubiks_cube_sim.model.Turn;
+import com.nizar.rubiks_cube_sim.service.interaction.CubeInteractorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

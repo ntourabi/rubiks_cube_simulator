@@ -4,7 +4,7 @@ import com.nizar.rubiks_cube_sim.model.Sticker;
 import com.nizar.rubiks_cube_sim.model.Cube;
 import com.nizar.rubiks_cube_sim.model.Face;
 import com.nizar.rubiks_cube_sim.model.FaceName;
-import com.nizar.rubiks_cube_sim.service.CubeInteractorService;
+import com.nizar.rubiks_cube_sim.service.interaction.CubeInteractorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
