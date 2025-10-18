@@ -10,7 +10,7 @@ import java.util.Map;
 @Component
 public class WhiteCrossSolver implements SolvingStage {
 
-    CubeInteractorService cubeInteractorService;
+    final private CubeInteractorService cubeInteractorService;
 
     @Autowired
     public WhiteCrossSolver(CubeInteractorService cubeInteractorService) {
