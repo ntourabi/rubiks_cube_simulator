@@ -7,3 +7,7 @@ class Cubie {
 class EdgeCubie extends Cubie {
 
 }
+
+class CornerCubie extends Cubie {
+
+}
